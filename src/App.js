@@ -530,11 +530,6 @@ const router = createBrowserRouter([
         element: <AdminLogin />,
       },
 
-      // {
-      //   path: "/dashboard",
-      //   element: <Dashboard />,
-      // },
-
       // Supplies
       {
         path: "/software-supply",

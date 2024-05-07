@@ -16,17 +16,17 @@ const AdminLogin = () => {
     e.preventDefault();
     const newUser = {
       email,
-      password
+      password,
     };
     try {
       const res = await axios.post(`${BASEURL}/api/v1/auth/login`, newUser, {
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
       });
       localStorage.setItem("token", JSON.stringify(res.data.access));
       toast.success("Admin Login Successfully");
 
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/main-dashboard");
       }, 1000);
 
       setTimeout(() => {
@@ -50,7 +50,7 @@ const AdminLogin = () => {
           backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url()`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
         }}
       >
         <div class="py-5 mt-5 ">
@@ -63,7 +63,7 @@ const AdminLogin = () => {
         className="container mb-5"
         style={{
           marginTop: "70px",
-          boxShadow: "rgba(0, 0, 0, 0.4) 0px 30px 90px"
+          boxShadow: "rgba(0, 0, 0, 0.4) 0px 30px 90px",
         }}
       >
         <div className="row">
