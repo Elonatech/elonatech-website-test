@@ -1,0 +1,20 @@
+.editorContainer {
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+  border: 1px solid lightgray;
+}
+
+.editor {
+  height: 300%;
+  border: none;
+  overflow-y: hidden;
+}
+
+/* ================= Media Query ====================== */
+
+@media screen and (min-width: 768px) {
+  .blog-write {
+    margin-left: 35vh;
+  }
+}

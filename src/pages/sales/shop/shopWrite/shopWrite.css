@@ -1,0 +1,29 @@
+.bg-size {
+  width: 50%;
+}
+
+@media (max-width: 1024px) {
+  .bg-size {
+    width: 55%;
+    margin: auto;
+  }
+}
+@media (max-width: 760px) {
+  .bg-size {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.editorContainer {
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+  border: 1px solid lightgray;
+}
+
+.editor {
+  height: 300%;
+  border: none;
+  overflow-y: hidden;
+}
