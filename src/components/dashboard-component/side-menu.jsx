@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./dashboard-styles.css";
+import { useState } from "react";
 
 const SideMenu = () => {
+  const location = useLocation();
+  const [activePage, setActivePage] = useState(location.pathname);
+
+  const handlePageChange = (pageName) => {
+    setActivePage(pageName);
+  };
+
   return (
     <>
       <div className="container-fluid mt-5">
@@ -16,7 +24,13 @@ const SideMenu = () => {
                   <ul class="nav flex-column">
                     <li class="nav-item">
                       <Link
-                        class="nav-link active"
+                        onClick={() => {
+                          handlePageChange("/main-dashboard");
+                        }}
+                        className={
+                          activePage === "/main-dashboard" ? "active" : ""
+                        }
+                        className="nav-link active"
                         aria-current="page"
                         to="/main-dashboard"
                       >
@@ -28,7 +42,16 @@ const SideMenu = () => {
                       </Link>
                     </li>
                     <li class="nav-item">
-                      <Link class="nav-link" to="/blog-upload">
+                      <Link
+                        onClick={() => {
+                          handlePageChange("/blog-upload");
+                        }}
+                        className={
+                          activePage === "/blog-upload" ? "active" : ""
+                        }
+                        className="nav-link"
+                        to="/blog-upload"
+                      >
                         <span
                           data-feather="file"
                           class="align-text-bottom"
