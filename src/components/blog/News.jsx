@@ -8,29 +8,41 @@ import BlogPagination from "./blogPagination/blogPagination";
 import "./blog.css";
 import { Helmet } from "react-helmet-async";
 
-const Blog = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6);
-  const [pageNumberLimit, setpageNumberLimit] = useState(4);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(4);
-  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
-  const [email, setEmail] = useState("");
+const News = () => {
+    const [data, setData] = useState([]);
+    const [records, setRecords] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(12);
+    const [pageNumberLimit, setpageNumberLimit] = useState(4);
+    const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(4);
+    const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`${BASEURL}/api/v1/blog/`);
+          const filtered = response.data.getAllBlogs.filter(
+            (user) => user.category === "news"
+          );
+          setData(filtered.reverse());
+          setRecords(filtered);
+          setIsLoading(true);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          setIsLoading(true);
+        }
+      };
+      fetchData();
+    }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${BASEURL}/api/v1/blog/`);
-        setData(response.data.getAllBlogs.reverse());
-        setIsLoading(true);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(true);
-      }
-    };
-    fetchData();
-  }, []);
+    const Filter = (event) => {
+        setRecords(
+          data
+            .reverse()
+            .filter((c) => c.name.toLowerCase().includes(event.target.value))
+        );
+      };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -212,7 +224,7 @@ const Blog = () => {
               <h5 style={{ color: "#34548c" }}>Categories</h5>
               <ul className="list-unstyled mt-2">
                 <li>
-                  <Link to="/blog" className="btn btn-outline-primary rounded-pill py-1 px-5 my-2">Blogs</Link>
+                  <Link to="/blog"  className="btn btn-outline-primary rounded-pill py-1 px-5 my-2">Blogs</Link>
                 </li>
                 <li>
                   <Link to="/news" className="btn btn-outline-primary rounded-pill py-1 px-5 my-2">News</Link>
@@ -272,4 +284,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default News;

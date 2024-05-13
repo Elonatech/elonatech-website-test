@@ -75,6 +75,12 @@ const BlogWrite = lazy(() => import("./components/blogWrite/blogWrite"));
 const BlogUpdate = lazy(() =>
   import("./components/blog/blogUpdate/blogUpdate")
 );
+const Trends = lazy(() =>
+  import("./components/blog/Trends")
+);
+const News = lazy(() =>
+  import("./components/blog/News")
+);
 const BlogRelated = lazy(() => import("./components/blogDetails/blogRelated"));
 
 // =====================================
@@ -319,8 +325,12 @@ const router = createBrowserRouter([
         element: <BlogDetails />,
       },
       {
-        path: "/blog/related/:id",
-        element: <BlogRelated />,
+        path: "/trends",
+        element: <Trends />,
+      },
+      {
+        path: "/news",
+        element: <News />,
       },
       {
         path: "/surveillance",
