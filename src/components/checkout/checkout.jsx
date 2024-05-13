@@ -108,7 +108,7 @@ const Checkout = () => {
         newData,
         { headers: { "Content-Type": "application/json" } }
       );
-
+       console.log(response)
       toast.success("Order Successfully Sent!!!", { toastId: response.data });
       navigate("/thank-you");
       emptyCart();
