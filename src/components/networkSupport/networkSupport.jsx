@@ -5,13 +5,12 @@ const NetworkSupport = () => {
   return (
     <>
       <Helmet>
-        <title>Network Support - Tech Solution, Digital Solution</title>
+        <meta name="title" content="Network Support - Tech Solution, Digital Solution" data-react-helmet="true" />
         <meta
           name="description"
           content="Network Support has to do with everything that keeps organizations' computer network running, productive, and up-to-date. It assures all devices are healthy, and all hardware, software, and personal devices are compatible and working. It also means supporting the people who use the equipment. "
         />
         <link rel="canonical" href="https://elonatech.com.ng/network-support" />
-        <meta name="title" content="Network Support - Tech Solution, Digital Solution" data-react-helmet="true" />
       </Helmet>
       {/*================================================================================ header ===========================================================*/}
       <div
